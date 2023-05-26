@@ -2,19 +2,13 @@ package stack
 
 import "fmt"
 
-func main() {
-	stack := Stack{[]int32{}}
-
-	stack.Push(2)
-	stack.Push(4)
-	stack.Push(7)
-	println("popped: %v", stack.Pop())
-	stack.Print()
-}
-
 // FiFo
 type Stack struct {
 	vec []int32
+}
+
+func New() *Stack {
+	return &Stack{}
 }
 
 func (s *Stack) Pop() int32 {
