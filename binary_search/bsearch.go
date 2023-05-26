@@ -1,14 +1,5 @@
 package bsearch
 
-// func main() {
-// 	println(fmt.Sprintf("position: %v", BSearch([]int{1, 5, 10, 15, 20, 32, 55, 61, 79, 110, 259, 521}, 20)))
-// 	v1 := [][]int{}
-
-// 	v1[1][1] = 0
-
-// 	println(v1)
-// }
-
 func BSearch(array []int, n int) int {
 	begin := 0
 	end := len(array) - 1
