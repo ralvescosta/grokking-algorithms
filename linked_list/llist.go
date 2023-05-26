@@ -9,13 +9,17 @@ type LinkedList struct {
 	head *Node
 }
 
+func New() *LinkedList {
+	return &LinkedList{}
+}
+
 func (l *LinkedList) Add(ID int) *LinkedList {
 	if l.head == nil {
 		l.head = &Node{ID: ID}
 		return l
 	}
 
-	current := l.head.next
+	current := l.head
 	for current.next != nil {
 		current = current.next
 	}
