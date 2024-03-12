@@ -1,3 +1,3 @@
-module github.com/hedrosistemas/graph
+module github.com/ralvescosta/grokking-algorithms/graph
 
-go 1.20
+go 1.21

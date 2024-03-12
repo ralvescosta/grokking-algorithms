@@ -1,3 +1,3 @@
-module github.com/rafael/algorith/bsearch
+module github.com/ralvescosta/grokking-algorithms/bsearch
 
-go 1.20
+go 1.21

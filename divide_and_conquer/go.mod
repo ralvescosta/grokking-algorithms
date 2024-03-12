@@ -1,3 +1,3 @@
-module github.com/hedrosistemas/divdeandconquer
+module github.com/ralvescosta/grokking-algorithms/divdeandconquer
 
-go 1.20
+go 1.21

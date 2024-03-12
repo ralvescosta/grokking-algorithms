@@ -1,3 +1,3 @@
-module github.com/hedrosistemas/ssort
+module github.com/ralvescosta/grokking-algorithms/ssort
 
-go 1.20
+go 1.21

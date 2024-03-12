@@ -1,3 +1,3 @@
-module github.com/hedrosistemas/qsort
+module github.com/ralvescosta/grokking-algorithms/qsort
 
-go 1.20
+go 1.21

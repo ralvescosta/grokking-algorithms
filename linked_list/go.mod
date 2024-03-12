@@ -1,3 +1,3 @@
-module github.com/hedrosistemas/llist
+module github.com/ralvescosta/grokking-algorithms/llist
 
-go 1.20
+go 1.21

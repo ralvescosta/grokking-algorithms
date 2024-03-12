@@ -1,3 +1,3 @@
-module algorith/bsort
+module github.com/ralvescosta/grokking-algorithms/bsort
 
-go 1.19
+go 1.21
