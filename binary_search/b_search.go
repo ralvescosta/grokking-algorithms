@@ -1,28 +1,38 @@
 package bsearch
 
 import (
-	"log"
-
 	"golang.org/x/exp/constraints"
 )
 
-func BSearch[T constraints.Ordered](array []T, v T) int32 {
-	length := int32(len(array))
-	var positionToVerify int32 = length / 2
+func BSearch[T constraints.Ordered](array []T, v T) int {
+	var low = 0
+	high := len(array) - 1
+
+	var mid int
+	var guess T
 
 	for {
-		log.Printf("c: %v\n", positionToVerify)
-
-		if array[positionToVerify] == v {
-			return positionToVerify
+		if high < low {
+			return -1
 		}
 
-		if array[positionToVerify] < v {
-			positionToVerify = positionToVerify + (positionToVerify / 2)
+		mid = (low + high) / 2
+		guess = array[mid]
+
+		if guess == v {
+			return mid
 		}
 
-		if array[positionToVerify] > v {
-			positionToVerify = positionToVerify / 2
+		if guess < v {
+			low = mid + 1
+			continue
 		}
+
+		if guess > v {
+			high = mid - 1
+			continue
+		}
+
+		low = mid + 1
 	}
 }
