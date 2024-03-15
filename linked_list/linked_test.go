@@ -28,3 +28,11 @@ func TestRemove(t *testing.T) {
 		t.Error("add not work properly")
 	}
 }
+
+func BenchmarkAdd(b *testing.B) {
+	list := NewLinkedList(10)
+
+	for i := 0; i < b.N; i++ {
+		list.Add(i)
+	}
+}
