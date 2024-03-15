@@ -21,5 +21,5 @@ func SelectionSort(arr []int) []int {
 		println(smallestIndex)
 	}
 
-	return arr
+	return newArr
 }
