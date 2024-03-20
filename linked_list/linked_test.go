@@ -1,6 +1,8 @@
 package llist
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestAdd(t *testing.T) {
 	linkedList := NewLinkedList[int]()
@@ -42,6 +44,10 @@ func TestAddInTheMiddle(t *testing.T) {
 		linkedList.list.next.next.next.next.next != nil {
 		t.Error("addInTheMiddle not work properly")
 	}
+}
+
+func TestRevert(t *testing.T) {
+
 }
 
 // func BenchmarkAdd(b *testing.B) {

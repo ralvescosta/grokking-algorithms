@@ -57,3 +57,8 @@ func (l *LinkedList[T]) Remove(index int) *LinkedList[T] {
 
 	return l
 }
+
+func (l *LinkedList[T]) Revert() *LinkedList[T] {
+
+	return l
+}

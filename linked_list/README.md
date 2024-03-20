@@ -9,5 +9,11 @@
 ## Insertion
 
 - Time Complexity worse case: O(1)
-- Time Complexity average case: O(n)
+- Time Complexity average case: O(1)
+- Time Complexity best case: O(1)
+
+## Deletion
+
+- Time Complexity worse case: O(1)
+- Time Complexity average case: O(1)
 - Time Complexity best case: O(1)
