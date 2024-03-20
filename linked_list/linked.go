@@ -16,6 +16,7 @@ func (l *LinkedList[T]) Add(v T) *LinkedList[T] {
 	}
 
 	c := l.next
+
 	for {
 		if c.next == nil {
 			c.next = &LinkedList[T]{value: v}
@@ -23,6 +24,21 @@ func (l *LinkedList[T]) Add(v T) *LinkedList[T] {
 		}
 
 		c = c.next
+	}
+}
+
+func (l *LinkedList[T]) AddInTheMiddle(index int, v T) {
+	var last *LinkedList[T]
+
+	for i := 0; i < index-1; i++ {
+		last = l.next
+	}
+
+	next := last.next
+
+	last.next = &LinkedList[T]{
+		value: v,
+		next:  next,
 	}
 }
 
