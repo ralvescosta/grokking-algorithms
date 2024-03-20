@@ -1,51 +1,55 @@
 package llist
 
-type LinkedList[T any] struct {
-	value T
-	next  *LinkedList[T]
-}
+type (
+	List[T any] struct {
+		value T
+		next  *List[T]
+	}
 
-func NewLinkedList[T any](v T) *LinkedList[T] {
-	return &LinkedList[T]{value: v}
+	LinkedList[T any] struct {
+		list *List[T]
+		last *List[T]
+	}
+)
+
+func NewLinkedList[T any]() *LinkedList[T] {
+	return &LinkedList[T]{}
 }
 
 func (l *LinkedList[T]) Add(v T) *LinkedList[T] {
-	if l.next == nil {
-		l.next = &LinkedList[T]{value: v}
+	if l.list == nil {
+		l.list = &List[T]{value: v}
+		l.last = l.list
 		return l
 	}
 
-	c := l.next
+	l.last.next = &List[T]{value: v}
+	l.last = l.last.next
 
-	for {
-		if c.next == nil {
-			c.next = &LinkedList[T]{value: v}
-			return l
-		}
-
-		c = c.next
-	}
+	return l
 }
 
-func (l *LinkedList[T]) AddInTheMiddle(index int, v T) {
-	var last *LinkedList[T]
+func (l *LinkedList[T]) AddInTheMiddle(index int, v T) *LinkedList[T] {
+	last := l.list
 
 	for i := 0; i < index-1; i++ {
-		last = l.next
+		last = l.list.next
 	}
 
 	next := last.next
 
-	last.next = &LinkedList[T]{
+	last.next = &List[T]{
 		value: v,
 		next:  next,
 	}
+
+	return l
 }
 
 func (l *LinkedList[T]) Remove(index int) *LinkedList[T] {
-	var itemBeforeTheItemThatWillBeRemove *LinkedList[T]
+	var itemBeforeTheItemThatWillBeRemove *List[T]
 	for i := 0; i < index-2; i++ {
-		itemBeforeTheItemThatWillBeRemove = l.next
+		itemBeforeTheItemThatWillBeRemove = l.list.next
 	}
 
 	itemThatWillBeRemoved := itemBeforeTheItemThatWillBeRemove.next
