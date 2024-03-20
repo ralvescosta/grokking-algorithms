@@ -59,6 +59,94 @@ func (l *LinkedList[T]) Remove(index int) *LinkedList[T] {
 }
 
 func (l *LinkedList[T]) Revert() *LinkedList[T] {
+	var current, next, prev *List[T]
+	current = l.list
+
+	// Runtime Example
+	//l.list = &List { 1, next: &List{ 2, next: &List{ 3, next: nil } } }
+	for current != nil {
+		//1
+		// current = &List { 1, next: &List{ 2, next: &List{ 3, next: nil } } }
+		// next = nil
+		// prev = nil
+		//
+		//2
+		// current = &List{ 2, next: List{ 3, next: nil } }
+		// next = &List{ 2, next: &List{ 3, next: nil } }
+		// prev =  &List { 1, next: nil }
+		//
+		//3
+		// current = &List{ 3, next: nil }
+		// next = &List{ 3, next: nil }
+		// prev = &List{ 2, next: List { 1, next: nil } }
+
+		next = current.next
+		//1
+		// current = &List { 1, next: &List{ 2, next: &List{ 3, next: nil } } }
+		// next = &List{ 2, next: &List{ 3, next: nil } }
+		// prev = nil
+		//
+		//2
+		// current = &List{ 2, next: List{ 3, next: nil } }
+		// next = &List{ 3, next: nil }
+		// prev =  &List { 1, next: nil }
+		//
+		//3
+		// current = &List{ 3, next: nil }
+		// next = nil
+		// prev = &List{ 2, next: List { 1, next: nil } }
+
+		current.next = prev
+		//1
+		// current = &List { 1, next: nil }
+		// next = &List{ 2, next: &List{ 3, next: nil } }
+		// prev = nil
+		//
+		//2
+		// current = &List{ 2, next: &List { 1, next: nil } }
+		// next = &List{ 3, next: nil }
+		// prev =  &List { 1, next: nil }
+		//
+		//3
+		// current = &List{ 3, next: &List{ 2, next: &List { 1, next: nil } } }
+		// next = nil
+		// prev = &List{ 2, next: List { 1, next: nil } }
+
+		prev = current
+		//1
+		// current = &List { 1, next: nil }
+		// next = &List{ 2, next: &List{ 3, next: nil } }
+		// prev = &List { 1, next: nil }
+		//
+		//2
+		// current = &List{ 2, next: &List { 1, next: nil } }
+		// next = &List{ 3, next: nil }
+		// prev = &List{ 2, next: List { 1, next: nil } }
+		//
+		//3
+		// current = &List{ 3, next: &List{ 2, next: &List { 1, next: nil } } }
+		// next = nil
+		// prev =  &List{ 3, next: &List{ 2, next: &List { 1, next: nil } } }
+
+		current = next
+		//1
+		// current = &List{ 2, next: List{ 3, next: nil } }
+		// next = &List{ 2, next: &List{ 3, next: nil } }
+		// prev =  &List { 1, next: nil }
+		//
+		//2
+		// current = &List{ 3, next: nil }
+		// next = &List{ 3, next: nil }
+		// prev = &List{ 2, next: List { 1, next: nil } }
+		//
+		//3
+		// current = nil
+		// next = nil
+		// prev =  &List{ 3, next: &List{ 2, next: &List { 1, next: nil } } }
+	}
+
+	l.list = prev
+	l.last = l.list
 
 	return l
 }
