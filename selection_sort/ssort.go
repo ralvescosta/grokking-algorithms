@@ -1,25 +1,38 @@
 package ssort
 
 func SelectionSort(arr []int) []int {
-	var smallest int
-	var smallestIndex int
+	if arr == nil || len(arr) <= 1 {
+		return arr
+	}
 
-	newArr := []int{}
+	sorted := []int{}
+	copied := arr
+
+	smallest := copied[0]
+	smallestIndex := 0
 
 	for range arr {
-		smallest = arr[0]
-		smallestIndex = 0
-
-		for j := range arr {
-			if arr[j] < smallest {
-				smallest = arr[j]
-				smallestIndex = j
+		for i := 0; i < len(copied); i++ {
+			if copied[i] < smallest {
+				smallest = copied[i]
+				smallestIndex = i
 			}
 		}
 
-		newArr = append(newArr, smallest)
-		println(smallestIndex)
+		sorted = append(sorted, smallest)
+		copied = remove(copied, smallestIndex)
+
+		smallest = copied[0]
+		smallestIndex = 0
 	}
 
-	return newArr
+	return sorted
+}
+
+func remove(arr []int, index int) []int {
+	if len(arr) <= 1 {
+		return arr
+	}
+
+	return append(arr[:index], arr[index+1:]...)
 }
